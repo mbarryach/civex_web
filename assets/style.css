@@ -89,8 +89,6 @@ header {
   transform: scale(1.05);
 }
 
-
-
 .nav-links {
   position: relative;
   display: flex;
@@ -99,7 +97,6 @@ header {
   gap: 30px;
   font-size: 14px;
 }
-
 
 .nav-links a {
   transition:
@@ -158,21 +155,31 @@ header {
 
 .btn-log {
   font-family: 'Manrope', sans-serif;
+  border: 0;
   font-weight: 700;
   background: var(--lila-oscuro);
   color: var(--blanco);
-  border: none;
   border-radius: 4px;
   padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;}
 
 .btn-log:hover {
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
   background: var(--verde-claro);
   color: #8B5CF6;
+}
+
+.btn-log:hover {
+  background: var(--verde-claro);
+  color: var(--negro);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(178, 255, 141, 0.2);
 }
 
 /* HERO */
@@ -284,21 +291,11 @@ header {
 
 /* GALERÍA */
 
-.gallery-section {
-  padding: 30px 0 85px;
-  background: var(--gris-oscuro);
-}
-
-.gallery-heading {
-  text-align: center;
-  padding: 40px 0 25px;
-}
-
 .gallery {
   display: flex;
   gap: 15px;
   overflow-x: auto;
-  padding-bottom: 10px;
+  padding-bottom: 100px;
 }
 
 .gallery img {
@@ -306,20 +303,12 @@ header {
   min-width: 210px;
   flex: 1;
   border-radius: 7px;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.gallery img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
 }
 
 /* TARJETAS */
 
 .cards-section {
-  background: var(--negro);
+  background: var(--gris-oscuro);
 }
 
 .cards {
@@ -371,47 +360,118 @@ header {
   color: var(--gris-claro);
 }
 
+/* CTA (titular + botón) */
+
+.cta {
+  text-align: center;
+  padding: 100px 40px 0;
+  background: var(--negro);
+  margin-bottom: 5rem;
+}
+
+.cta h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  max-width: 620px;
+  margin: 0 auto 70px;
+  color: var(--blanco);
+}
+
+.cta p {
+  font-size: 0.85rem;
+  color: var(--gris-claro);
+  margin: 0 0 12px;
+}
+
+.cta .btn {
+  margin-top: 0;
+  padding: 16px 42px;
+  color: var(--blanco);
+}
+
+.cta .btn:hover {
+  color: var(--negro);
+}
+
 /* FOOTER */
 
-footer {
-  background: var(--gris-oscuro);
-  color: var(--blanco);
-  padding: 90px 0 25px;
-  text-align: center;
+.footer {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 40px 70px;
+  padding: 60px 48px 20px;
+  background: var(--negro);
 }
 
-footer h2 {
-  font-size: clamp(36px, 5vw, 60px);
-  margin: 0 0 20px;
-  color: var(--blanco);
-}
-
-footer .intro {
-  max-width: 550px;
-  margin: auto;
-  color: var(--gris-claro);
-  line-height: 1.8;
-}
-
-.footer-bottom {
-  border-top: 1px solid var(--lila-oscuro);
-  margin-top: 80px;
-  padding-top: 25px;
+.footer__brand {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  text-align: left;
-  font-size: 14px;
-  color: var(--gris-claro);
+  flex-direction: column;
+  max-width: 220px;
+}
+
+.footer__brand h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0 0 12px;
+  color: var(--blanco);
 }
 
 .socials {
   display: flex;
-  gap: 22px;
+  gap: 16px;
+  margin-bottom: 55px;
 }
 
-.socials a:hover {
+.social {
+  width: 27px;
+  height: 27px;
+  background: var(--lila-oscuro);
+  border-radius: 7px;
+  transition: transform 0.15s ease, background-color 0.3s ease;
+}
+
+.social:hover {
+  background: var(--verde-claro);
+  transform: scale(1.12);
+}
+
+.footer__brand small {
+  font-size: 0.55rem;
+  color: var(--gris-claro);
+  white-space: nowrap;
+}
+
+.footer__col {
+  text-align: center;
+  padding-top: 4px;
+}
+
+.footer__col h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--blanco);
+}
+
+.footer__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__col a {
+  color: var(--blanco);
+  font-size: 0.6rem;
+  line-height: 1.7;
+}
+
+.footer__col a:hover {
   color: var(--verde-claro);
 }
 

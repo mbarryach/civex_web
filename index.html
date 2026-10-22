@@ -8,17 +8,16 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
   </head>
   <body>
 
     <header>
       <nav class="container nav">
-        
+
         <a href="#inicio" class="logo">
           <svg class="logo-img"
               xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +35,7 @@
           <a href="#nosotros">Nosotros</a>
           <a href="#experiencias">Experiencias</a>
           <a href="#contacto">Contacto</a>
-          <button class="btn-log">Log In</button>
+          <button class="btn-log">Iniciar sesión</button>
         </div>
       </nav>
     </header>
@@ -80,20 +79,13 @@
         </div>
       </section>
 
-      <section class="gallery-section">
-        <div class="container">
-          <div class="gallery-heading">
-            <span class="eyebrow">Momentos únicos</span>
-            <h2>Inspírate para tu próxima aventura</h2>
-          </div>
-
-          <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=80" alt="Valle natural"/>
-              <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=500&q=80" alt="Bosque"/>
-              <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=500&q=80" alt="Montañas"/>
-            <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=500&q=80" alt="Atardecer"/>
-            <img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=500&q=80" alt="Cascada"/>
-          </div>
+      <section class="container">
+        <div class="gallery">
+          <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=80" alt="Valle natural"/>
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=500&q=80" alt="Bosque"/>
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=500&q=80" alt="Montañas"/>
+          <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=500&q=80" alt="Atardecer"/>
+          <img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=500&q=80" alt="Cascada"/>
         </div>
       </section>
 
@@ -129,30 +121,54 @@
           </div>
         </div>
       </section>
+
+      <section class="cta" id="contacto">
+        <h2>Curabitur vestibulum in augue laoreet venenatis.</h2>
+        <p>Curabitur vestibulum in augue laoreet venenatis.</p>
+        <a href="#contacto" class="btn">Contacta-nos</a>
+      </section>
+
     </main>
 
-    <footer id="contacto">
-      <div class="container">
-        <h2>¿Listo para explorar?</h2>
-        <p class="intro">
-          Tu próxima gran aventura empieza aquí. Descubre nuevos horizontes y
-          convierte tus ganas de viajar en experiencias inolvidables.
-        </p>
-        <a class="btn" href="mailto:hola@explora.example">Contáctanos →</a>
-        <div class="footer-bottom">
-          <span>© 2026 EXPLORA. Todos los derechos reservados.</span>
-          <div class="socials">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" >Instagram</a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a>
-          </div>
-          <span>Hecho para aventureros.</span>
+    <footer class="footer">
+
+      <div class="footer__brand">
+        <h2>Curabitur vestibulum in venenatis.</h2>
+        <div class="socials">
+          <a href="#" class="social" aria-label="Red social 1"></a>
+          <a href="#" class="social" aria-label="Red social 2"></a>
+          <a href="#" class="social" aria-label="Red social 3"></a>
         </div>
+        <small>Curabitur vestibulum in augue laoreet venenatis.</small>
       </div>
+
+      <nav class="footer__col">
+        <h3>Lorem Ipsum</h3>
+        <ul>
+          <li><a href="#">Lorem Ipsum</a></li>
+          <li><a href="#">Lorem Ipsum</a></li>
+          <li><a href="#">Lorem Ipsum</a></li>
+          <li><a href="#">Lorem Ipsum</a></li>
+          <li><a href="#">Lorem Ipsum</a></li>
+          <li><a href="#">Lorem Ipsum</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col">
+        <h3>Lorem Ipsum</h3>
+        <ul>
+          <li><a href="#">Lorem Ipsum</a></li>
+          <li><a href="#">Lorem Ipsum</a></li>
+          <li><a href="#">Lorem Ipsum</a></li>
+          <li><a href="#">Lorem Ipsum</a></li>
+          <li><a href="#">Lorem Ipsum</a></li>
+          <li><a href="#">Lorem Ipsum</a></li>
+        </ul>
+      </nav>
     </footer>
+ 
 
-
-    <script src="assets/gradient.js"></script>
-    <script src="assets/navbar.js"></script>
+    <script src="assets/gradient.js" defer></script>
+    <script src="assets/navbar.js" defer></script>
   </body>
 </html>
