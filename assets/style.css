@@ -360,7 +360,7 @@ header {
   align-items: center;
   background: var(--gris-oscuro);
   overflow: hidden;
-  padding: 60px 0;
+  padding: 100px 0;
 }
 
 .cards-viewport {
@@ -640,47 +640,6 @@ header {
   border-radius: 28px 28px 0 0;
 }
  
-/* ---------- TERMINAL (Nosotros) ---------- */
- 
-.terminal {
-  background: #0b0c10;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  will-change: transform;
-}
- 
-.terminal__bar {
-  display: flex;
-  gap: 8px;
-  padding: 14px 16px;
-  background: #16181d;
-}
- 
-.terminal__bar span {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #3a3d46;
-}
- 
-.terminal__body {
-  margin: 0;
-  min-height: 360px;
-  padding: 28px 24px;
-  font-size: 14px;
-  line-height: 2;
-  color: var(--gris-claro);
-  white-space: pre-wrap;
-}
- 
-.t-prompt { color: var(--lila-claro); }
-.t-ok     { color: var(--verde-claro); }
-.t-warn   { color: #fbbf24; }
-.t-dim    { color: #7c8190; }
- 
 /* ---------- TECNOLOGÍAS ---------- */
  
 .tech {
@@ -700,7 +659,7 @@ header {
 /* ---------- METODOLOGÍA (scroll horizontal) ---------- */
  
 .cards {
-  padding: 0 6vw;
+  padding: 20px 6vw;
   gap: 28px;
 }
  
