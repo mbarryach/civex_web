@@ -6,14 +6,16 @@
 
   const ctx = canvas.getContext("2d");
   const hero = canvas.parentElement;
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
   // Colores de la paleta del proyecto (rgb) y su tamaño relativo
   const blobs = [
-    { color: "91, 52, 190", size: 0.55, speed: 0.0006, phase: 0 },    // lila muy oscuro
-    { color: "110, 80, 200", size: 0.45, speed: 0.0009, phase: 2 },   // lila apagado
-    { color: "70, 140, 60", size: 0.25, speed: 0.0007, phase: 4 },    // verde oscuro
-    { color: "91, 52, 190", size: 0.4, speed: 0.0011, phase: 5.5 },   // lila muy oscuro
+    { color: "91, 52, 190", size: 0.55, speed: 0.0006, phase: 0 }, // lila muy oscuro
+    { color: "110, 80, 200", size: 0.45, speed: 0.0009, phase: 2 }, // lila apagado
+    { color: "70, 140, 60", size: 0.25, speed: 0.0007, phase: 4 }, // verde oscuro
+    { color: "91, 52, 190", size: 0.4, speed: 0.0011, phase: 5.5 }, // lila muy oscuro
   ];
 
   // El cursor arrastra una mancha extra con suavizado

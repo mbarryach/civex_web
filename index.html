@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CIVEX - Empresa de ciberseguridad</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.css">
     <link rel="stylesheet" href="assets/style.css"/>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +46,7 @@
       <section class="hero" id="inicio">
         <canvas id="hero-canvas" aria-hidden="true"></canvas>
         <div class="container hero-content">
-          <h1>CIVEX.</h1>
+          <h1>CIVEX<span style="color: var(--verde-claro);">.</span></h1>
           <p>
             Explora paisajes increíbles, descubre nuevos lugares y crea
             recuerdos que duren para siempre.
@@ -80,93 +81,167 @@
       </section>
 
       <section class="container">
-        <div class="gallery">
-          <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=80" alt="Valle natural"/>
-            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=500&q=80" alt="Bosque"/>
-            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=500&q=80" alt="Montañas"/>
-          <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=500&q=80" alt="Atardecer"/>
-          <img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=500&q=80" alt="Cascada"/>
-        </div>
+        <div class="gallery-container">
+          <div class="gallery">
+            <img src="assets/img/logos/firebase-logo.webp" alt="firebase-logo">
+            <img src="assets/img/logos/github-logo.webp" alt="github-logo">
+            <img src="assets/img/logos/grafana-logo.webp" alt="grafana-logo">
+            <img src="assets/img/logos/kali-logo.webp" alt="kali-logo">
+            <img src="assets/img/logos/netfilter-logo.webp" alt="netfilter-logo">
+            <img src="assets/img/logos/suricata-logo.webp" alt="suricata-logo">
+            <img src="assets/img/logos/prometheus-logo.webp" alt="prometheus-logo">
+            <img src="assets/img/logos/Proxmox_logo.webp" alt="proxmox-logo">
+            <img src="assets/img/logos/vbox-logo.webp" alt="vbox-logo">
+            <img src="assets/img/logos/wazuh-logo.webp" alt="wazuh-logo">    
+            <!-- ////////////////////////////////////////////////////////////////////////// -->
+            <img src="assets/img/logos/firebase-logo.webp" alt="firebase-logo">
+            <img src="assets/img/logos/github-logo.webp" alt="github-logo">
+            <img src="assets/img/logos/grafana-logo.webp" alt="grafana-logo">
+            <img src="assets/img/logos/kali-logo.webp" alt="kali-logo">
+            <img src="assets/img/logos/netfilter-logo.webp" alt="netfilter-logo">
+            <img src="assets/img/logos/suricata-logo.webp" alt="suricata-logo">
+            <img src="assets/img/logos/prometheus-logo.webp" alt="prometheus-logo">
+            <img src="assets/img/logos/Proxmox_logo.webp" alt="proxmox-logo">
+            <img src="assets/img/logos/vbox-logo.webp" alt="vbox-logo">
+            <img src="assets/img/logos/wazuh-logo.webp" alt="wazuh-logo">        
+          </div>
+        </div>  
       </section>
 
-      <section class="section cards-section" id="experiencias">
-        <div class="container">
-          <span class="eyebrow">Vive la aventura</span>
-          <h2>Experiencias para recordar</h2>
+      <section class="cards-section" id="experiencias">
+        <div class="cards-viewport">
           <div class="cards">
+
             <article class="card">
-              <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=80" alt="Montañas"/>
+              <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=80" alt="Montañas">
               <div class="card-content">
                 <h3>Montañas</h3>
-                <p>
-                  Rutas y paisajes impresionantes para conectar con la
-                  naturaleza.
-                </p>
+                <p>Rutas y paisajes impresionantes para conectar con la naturaleza.</p>
               </div>
             </article>
+
             <article class="card">
-              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80" alt="Playa"/>
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80" alt="Playa">
               <div class="card-content">
                 <h3>Playas</h3>
                 <p>Rincones paradisíacos donde relajarte y desconectar.</p>
               </div>
             </article>
+
             <article class="card">
-              <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=700&q=80" alt="Bosque"/>
+              <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=700&q=80" alt="Bosque">
               <div class="card-content">
                 <h3>Bosques</h3>
                 <p>Senderos mágicos para explorar a tu propio ritmo.</p>
               </div>
             </article>
+
+            <article class="card">
+              <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=700&q=80" alt="Desierto">
+              <div class="card-content">
+                <h3>Desiertos</h3>
+                <p>Paisajes infinitos y aventuras únicas entre dunas doradas.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=700&q=80" alt="Ciudad">
+              <div class="card-content">
+                <h3>Ciudades</h3>
+                <p>Descubre lugares vibrantes, arquitectura y nuevas culturas.</p>
+              </div>
+            </article>
+
           </div>
         </div>
       </section>
 
+      <!-- CTA -->
       <section class="cta" id="contacto">
-        <h2>Curabitur vestibulum in augue laoreet venenatis.</h2>
-        <p>Curabitur vestibulum in augue laoreet venenatis.</p>
-        <a href="#contacto" class="btn">Contacta-nos</a>
+        <div class="cta-content">
+          <span class="eyebrow">CONTACTA CON NOSOTROS</span>
+
+          <h2>¿Preparado para dar el siguiente paso?</h2>
+
+          <p>
+            Descubre todo lo que podemos ofrecerte.
+            Estamos aquí para ayudarte a conseguir tus objetivos.
+          </p>
+
+          <a href="mailto:contacto@tudominio.com" class="btn">
+            Contactar
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
       </section>
 
-    </main>
+        <!-- FOOTER -->
+        <footer class="footer">
+          <div class="footer-container">
 
-    <footer class="footer">
+            <!-- IZQUIERDA -->
+            <div class="footer__brand">
+              <h2>CIVEX<span>.</span></h2>
 
-      <div class="footer__brand">
-        <h2>Curabitur vestibulum in venenatis.</h2>
-        <div class="socials">
-          <a href="#" class="social" aria-label="Red social 1"></a>
-          <a href="#" class="social" aria-label="Red social 2"></a>
-          <a href="#" class="social" aria-label="Red social 3"></a>
-        </div>
-        <small>Curabitur vestibulum in augue laoreet venenatis.</small>
-      </div>
+              <p>
+                Innovación, tecnología y seguridad.
+                Construyendo el futuro digital.
+              </p>
 
-      <nav class="footer__col">
-        <h3>Lorem Ipsum</h3>
-        <ul>
-          <li><a href="#">Lorem Ipsum</a></li>
-          <li><a href="#">Lorem Ipsum</a></li>
-          <li><a href="#">Lorem Ipsum</a></li>
-          <li><a href="#">Lorem Ipsum</a></li>
-          <li><a href="#">Lorem Ipsum</a></li>
-          <li><a href="#">Lorem Ipsum</a></li>
-        </ul>
-      </nav>
+              <div class="socials">
+                <a href="#" class="social" aria-label="GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
 
-      <nav class="footer__col">
-        <h3>Lorem Ipsum</h3>
-        <ul>
-          <li><a href="#">Lorem Ipsum</a></li>
-          <li><a href="#">Lorem Ipsum</a></li>
-          <li><a href="#">Lorem Ipsum</a></li>
-          <li><a href="#">Lorem Ipsum</a></li>
-          <li><a href="#">Lorem Ipsum</a></li>
-          <li><a href="#">Lorem Ipsum</a></li>
-        </ul>
-      </nav>
-    </footer>
+                <a href="#" class="social" aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+
+                <a href="#" class="social" aria-label="Instagram">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- DERECHA -->
+            <div class="footer-links">
+
+              <nav class="footer__col" aria-label="Explorar">
+                <h3>Explorar</h3>
+                <ul>
+                  <li><a href="#inicio">Inicio</a></li>
+                  <li><a href="#nosotros">Nosotros</a></li>
+                  <li><a href="#experiencias">Experiencias</a></li>
+                  <li><a href="#contacto">Contacto</a></li>
+                </ul>
+              </nav>
+
+              <nav class="footer__col" aria-label="Información">
+                <h3>Información</h3>
+                <ul>
+                  <li><a href="#">Servicios</a></li>
+                  <li><a href="#">Proyectos</a></li>
+                  <li><a href="#">Privacidad</a></li>
+                  <li><a href="#">Términos legales</a></li>
+                </ul>
+              </nav>
+
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p>© 2026 CIVEX. Todos los derechos reservados.</p>
+            <span>Diseñado con pasión por la tecnología.</span>
+          </div>
+        </footer>
+
  
+
+    <!-- Lenis + GSAP (el orden importa: librerías primero, luego tu script) -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="assets/smooth-scroll.js" defer></script>
 
     <script src="assets/gradient.js" defer></script>
     <script src="assets/navbar.js" defer></script>
