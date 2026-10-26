@@ -622,3 +622,356 @@ header {
   color: #777d89;
   font-size: 12px;
 }
+
+/* ---------- HERO + PARALLAX ---------- */
+ 
+.hero {
+  overflow: hidden; /* el canvas se desplaza con el parallax */
+}
+ 
+.hero .btn {
+  margin-top: 28px;
+}
+ 
+/* "Nosotros" sube y tapa un poco el hero (efecto cortina) */
+#nosotros {
+  position: relative;
+  z-index: 2;
+  border-radius: 28px 28px 0 0;
+}
+ 
+/* ---------- TERMINAL (Nosotros) ---------- */
+ 
+.terminal {
+  background: #0b0c10;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  will-change: transform;
+}
+ 
+.terminal__bar {
+  display: flex;
+  gap: 8px;
+  padding: 14px 16px;
+  background: #16181d;
+}
+ 
+.terminal__bar span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #3a3d46;
+}
+ 
+.terminal__body {
+  margin: 0;
+  min-height: 360px;
+  padding: 28px 24px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--gris-claro);
+  white-space: pre-wrap;
+}
+ 
+.t-prompt { color: var(--lila-claro); }
+.t-ok     { color: var(--verde-claro); }
+.t-warn   { color: #fbbf24; }
+.t-dim    { color: #7c8190; }
+ 
+/* ---------- TECNOLOGÍAS ---------- */
+ 
+.tech {
+  padding-bottom: 80px;
+}
+ 
+.tech-label {
+  margin: 60px 0 28px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 12px;
+  color: var(--gris-claro);
+  opacity: 0.6;
+}
+ 
+/* ---------- METODOLOGÍA (scroll horizontal) ---------- */
+ 
+.cards {
+  padding: 0 6vw;
+  gap: 28px;
+}
+ 
+.cards-intro {
+  flex: 0 0 clamp(300px, 30vw, 440px);
+  padding-right: 30px;
+}
+ 
+.cards-intro h2 {
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 1.1;
+  margin: 15px 0 20px;
+  color: var(--blanco);
+}
+ 
+.cards-intro p {
+  line-height: 1.8;
+  color: var(--gris-claro);
+}
+ 
+.card {
+  flex: 0 0 clamp(280px, 26vw, 380px);
+  width: auto;
+  min-height: 400px;
+  padding: 32px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+ 
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+ 
+.card-number {
+  font-family: "Orbitron", sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--lila-claro);
+  transition: -webkit-text-stroke-color 0.3s ease;
+}
+ 
+.card:hover .card-number {
+  -webkit-text-stroke-color: var(--verde-claro);
+}
+ 
+.card-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--lila-claro);
+  font-size: 19px;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+ 
+.card:hover .card-icon {
+  background: var(--verde-claro);
+  color: var(--negro);
+}
+ 
+.card h3 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  color: var(--blanco);
+}
+ 
+.card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--gris-claro);
+}
+ 
+/* ---------- ENTORNO: 3 PCs ---------- */
+ 
+.section--alt {
+  background: var(--gris-oscuro);
+}
+ 
+.section-head {
+  max-width: 720px;
+  margin-bottom: 50px;
+}
+ 
+.pc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+ 
+.pc-card {
+  padding: 32px;
+  background: var(--gris-oscuro);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+ 
+.pc-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--verde-claro);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+ 
+.pc-card__tag {
+  font-family: "Orbitron", sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--verde-claro);
+}
+ 
+.pc-card h3 {
+  margin: 14px 0 10px;
+  font-size: 24px;
+  color: var(--blanco);
+}
+ 
+.pc-card p {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--gris-claro);
+}
+ 
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+}
+ 
+.chips li {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--lila-claro);
+  font-size: 12px;
+  font-weight: 600;
+}
+ 
+/* ---------- CASO PRÁCTICO ---------- */
+ 
+.case-panel {
+  padding: 32px;
+  background: var(--negro);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+ 
+.case-panel h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: var(--blanco);
+}
+ 
+.case-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ 
+.case-list li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--gris-claro);
+}
+ 
+.case-list li:last-child {
+  border-bottom: 0;
+}
+ 
+.case-list i {
+  width: 22px;
+  text-align: center;
+  color: var(--verde-claro);
+}
+ 
+/* ---------- RESPONSIVE ---------- */
+ 
+@media (max-width: 900px) {
+  .pc-grid {
+    grid-template-columns: 1fr;
+  }
+ 
+  .footer-container {
+    flex-direction: column;
+    gap: 45px;
+  }
+ 
+  .footer-links {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+ 
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+ 
+@media (max-width: 750px) {
+  h1 {
+    letter-spacing: -0.5rem;
+  }
+ 
+  .nav-links {
+    gap: 12px;
+    font-size: 12px;
+  }
+ 
+  .hero {
+    min-height: 600px;
+  }
+ 
+  .split {
+    flex-direction: column;
+    gap: 35px;
+  }
+ 
+  .section {
+    padding: 70px 0;
+  }
+ 
+  #nosotros {
+    margin-top: -6vh;
+    border-radius: 20px 20px 0 0;
+  }
+ 
+  /* Metodología: sin scroll horizontal, tarjetas apiladas */
+  .cards-section {
+    min-height: auto;
+    padding: 70px 0;
+  }
+ 
+  .cards {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    padding: 0 5vw;
+  }
+ 
+  .cards-intro,
+  .card {
+    flex: none;
+    width: 100%;
+  }
+ 
+  .card {
+    min-height: 280px;
+    gap: 30px;
+  }
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  .gallery {
+    animation: none;
+  }
+}
