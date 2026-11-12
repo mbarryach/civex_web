@@ -34,13 +34,19 @@ CREATE TABLE usuarios (
   activo         TINYINT(1) NOT NULL DEFAULT 1,
   creado_en      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   ultimo_acceso  DATETIME NULL,
+  CONSTRAINT chk_usuario_rol_cliente CHECK (
+    (rol = 'admin_civex' AND cliente_id IS NULL)
+    OR
+    (rol = 'cliente' AND cliente_id IS NOT NULL)),
   CONSTRAINT fk_usuarios_cliente FOREIGN KEY (cliente_id) REFERENCES clientes(id)
 ) ENGINE=InnoDB;
+
+
 
 -- Infraestructura. cliente_id NULL = máquina propia de CIVEX (Kali, Wazuh, plataforma)
 CREATE TABLE maquinas (
   id                    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  cliente_id            INT UNSIGNED NULL,
+  cliente_id            INT UNSIGNED NOT NULL,
   nombre                VARCHAR(60) NOT NULL UNIQUE,
   ip_principal          VARCHAR(45) NOT NULL,
   ip_secundaria         VARCHAR(45) NULL,
@@ -145,6 +151,7 @@ CREATE TABLE vulnerabilidades (
 -- Incidencias: seguimiento de problemas
 CREATE TABLE incidencias (
   id                INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  maquina_id        INT UNSIGNED NOT NULL,
   titulo            VARCHAR(160) NOT NULL,
   descripcion       TEXT NULL,
   prioridad         ENUM('baja','media','alta','critica') NOT NULL DEFAULT 'media',
@@ -154,6 +161,8 @@ CREATE TABLE incidencias (
   vulnerabilidad_id INT UNSIGNED NULL,
   creada_en         DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   cerrada_en        DATETIME NULL,
+  CONSTRAINT fk_inc_maquina
+  FOREIGN KEY (maquina_id) REFERENCES maquinas(id),
   CONSTRAINT fk_inc_resp FOREIGN KEY (responsable_id)    REFERENCES usuarios(id)         ON DELETE SET NULL,
   CONSTRAINT fk_inc_ale  FOREIGN KEY (alerta_id)         REFERENCES alertas(id)          ON DELETE SET NULL,
   CONSTRAINT fk_inc_vul  FOREIGN KEY (vulnerabilidad_id) REFERENCES vulnerabilidades(id) ON DELETE SET NULL
@@ -235,12 +244,18 @@ FROM alertas a
 JOIN maquinas m ON m.id = a.maquina_id;
 
 -- Gráfico de líneas (consulta para el PHP, con :cliente = id del cliente):
---   SELECT DATE_FORMAT(h.fecha, '%H:00') AS hora,
---          ROUND(AVG(h.cpu_pct), 1) AS cpu, ROUND(AVG(h.ram_pct), 1) AS ram
---   FROM metricas_historico h
---   JOIN maquinas m ON m.id = h.maquina_id
---   WHERE m.cliente_id = :cliente AND h.fecha >= NOW() - INTERVAL 24 HOUR
---   GROUP BY hora ORDER BY MIN(h.fecha);
+-- SELECT
+--     DATE(h.fecha) AS dia,
+--     HOUR(h.fecha) AS hora,
+--     ROUND(AVG(h.cpu_pct), 1) AS cpu,
+--     ROUND(AVG(h.ram_pct), 1) AS ram,
+--     ROUND(AVG(h.disco_pct), 1) AS disco
+-- FROM metricas_historico h
+-- JOIN maquinas m ON m.id = h.maquina_id
+-- WHERE m.cliente_id = 1
+--   AND h.fecha >= NOW() - INTERVAL 7 DAY
+-- GROUP BY DATE(h.fecha), HOUR(h.fecha)
+-- ORDER BY dia, hora;
 
 -- =====================================================================
 -- 3. DATOS DE EJEMPLO · infraestructura (según docs/arquitectura.md)
@@ -251,8 +266,8 @@ INSERT INTO clientes (nombre, descripcion) VALUES
 
 -- Contraseñas: se generan desde PHP con password_hash(); aquí queda un marcador
 INSERT INTO usuarios (cliente_id, nombre, email, password_hash, rol) VALUES
-  (NULL, 'Admin CIVEX',  'admin@civex.local',        'PENDIENTE_HASH', 'admin_civex'),
-  (1,    'Usuario Demo', 'demo@sonrisaviva.local',   'PENDIENTE_HASH', 'cliente');
+  (NULL, 'Admin CIVEX', 'apellido',  'admin@civex.local',        'PENDIENTE_HASH', 'admin_civex'),
+  (1,    'Usuario Demo', 'apellido', 'demo@sonrisaviva.local',   'PENDIENTE_HASH', 'cliente');
 
 INSERT INTO maquinas
   (cliente_id, nombre, ip_principal, ip_secundaria, sistema_operativo, tipo, red, funcion, estado, ultima_actualizacion)
@@ -262,10 +277,7 @@ VALUES
   (1,    'DNS-01',     '10.10.10.10',     NULL,          'Linux',      'vm',   'Interna',   'Servidor DNS',                'encendida',    NOW()),
   (1,    'CLINICA-01', '10.10.10.20',     NULL,          'Linux',      'vm',   'Interna',   'Servidor interno MariaDB',    'desconectada', NOW() - INTERVAL 3 HOUR),
   (1,    'WEB-01',     '10.10.11.10',     NULL,          'Linux',      'vm',   'DMZ',       'Servidor web de citas',       'encendida',    NOW()),
-  (1,    'MON-01',     '10.10.10.40',     NULL,          'Linux',      'vm',   'Interna',   'Prometheus + Grafana',        'encendida',    NOW()),
-  (NULL, 'CIVEX-01',   '192.168.111.211', '10.10.20.10', 'Linux',      'vm',   'CIVEX',     'Plataforma web',              'encendida',    NOW()),
-  (NULL, 'WAZUH-01',   '10.10.20.30',     NULL,          'Linux',      'vm',   'CIVEX',     'Centro de seguridad SOC',     'encendida',    NOW()),
-  (NULL, 'KALI-01',    '192.168.111.221', '10.10.30.10', 'Kali Linux', 'vm',   'Atacante',  'Máquina atacante',            'encendida',    NOW());
+  (1,    'MON-01',     '10.10.10.40',     NULL,          'Linux',      'vm',   'Interna',   'Prometheus + Grafana',        'encendida',    NOW());
 
 INSERT INTO servicios (maquina_id, nombre, estado, ultima_comprobacion) VALUES
   (1, 'Proxmox',    'disponible', NOW()),
@@ -273,8 +285,7 @@ INSERT INTO servicios (maquina_id, nombre, estado, ultima_comprobacion) VALUES
   (3, 'DNS',        'disponible', NOW()),
   (4, 'MariaDB',    'caido',      NOW() - INTERVAL 3 HOUR),
   (5, 'Web HTTPS',  'disponible', NOW()),
-  (6, 'Prometheus', 'disponible', NOW()),
-  (8, 'Wazuh',      'disponible', NOW());
+  (6, 'Prometheus', 'disponible', NOW());
 
 INSERT INTO metricas_actuales
   (maquina_id, cpu_pct, ram_usada_mb, ram_total_mb, disco_pct, red_entrada_bytes, red_salida_bytes, uptime_seg, actualizado_en)
@@ -332,9 +343,17 @@ VALUES
      'El servidor web admite protocolos TLS obsoletos.', 'alta',
      'Protocolo TLS antiguo aceptado.', 'Deshabilitar protocolos obsoletos.', 'pendiente', NOW() - INTERVAL 1 DAY, NULL);
 
-INSERT INTO incidencias (titulo, descripcion, prioridad, estado, responsable_id, alerta_id, vulnerabilidad_id) VALUES
-  ('MariaDB sin servicio en CLINICA-01', 'El servicio dejó de responder.', 'alta', 'en_curso', 1, 3, 3),
-  ('Acceso SSH expuesto en FW-01',       'Pendiente de restringir el acceso.', 'media', 'abierta', 1, 1, 1);
+INSERT INTO incidencias
+(maquina_id, titulo, descripcion, prioridad, estado,
+ responsable_id, alerta_id, vulnerabilidad_id)
+VALUES
+(4, 'MariaDB sin servicio en CLINICA-01',
+ 'El servicio dejó de responder.',
+ 'alta', 'en_curso', 1, 3, 3),
+
+(2, 'Acceso SSH expuesto en FW-01',
+ 'Pendiente de restringir el acceso.',
+ 'media', 'abierta', 1, 1, 1);
 
 INSERT INTO backups (maquina_id, fecha, resultado, tamano_mb, ubicacion, prueba_restauracion_en) VALUES
   (4, NOW() - INTERVAL 1 DAY,  'correcto', 2400, 'almacen-backups', NOW() - INTERVAL 7 DAY),
